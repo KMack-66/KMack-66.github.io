@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+	Contact Me page for Project 2
+	-JavaScript and Web Forms
+-->
+
+<title>Kelsey Mack: Contact Me</title>
+   <link href="project1_res.css" rel="stylesheet" />
+   <link href="Project1_style.css" rel="stylesheet" />
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+   <header>
+		<img src="goals_img.png" />
+		<nav class="horizontal">
+			<ul class="mainmenu">
+				<li><a href="kelseymack_Project1.html">Intro</a></li>
+				<li><a href="present_day.html">About Me Today</a></li>
+				<li><a href="project1_goals.html">About My Future</a></li>
+				<!-- Chapter 7 and 9 in this HTML -->
+				<li><a href="contact_me.html">Contact Me</a></li> 
+			</ul>
+		</nav>
+   </header>
+   
+   <section>
+		<article>
+			<p>Please fill out the form below to keep in touch!</p>
+			<!-- Form format -->
+			<form id="contactForm" action="#" method="get">
+				<!-- mobile keyboard types -->
+				<fieldset>
+					<legend>Contact Information</legend>
+					<label for="fullName">Full Name</label>
+					<input type="text" id="fullName" name="fullName"
+						   placeholder="Enter Your Name Here"
+						   minlength="2" maxlength="100"
+						   title="Letters and spaces only, 2-100 characters"
+						   required />
+				
+				<label for="email">Email Address</label>
+				<input type="email" id="email" name="email"
+						placeholder="youremail@email.com"
+						maxlength="100"
+						required />
+				
+				<label for="phone">Phone Number</label>
+				<input type="tel" id="phone" name="phone"
+					   placeholder="123-456-7890"
+					   title="Format: 123-456-7890" />
+				
+				<label for="contactDate">Preferred Contact Date</label>
+				<input type="date" id="contactDate" name="contactDate" />
+			
+				<label for="contactTime">Preferred Contact Time</label>
+				<input type="time" id="contactTime" name="contactTime" />
+			</fieldset>
+			<!-- Fieldset: Radio Button, Rate Slider, Checkboxes, dropdown and datalist -->
+			<fieldset>
+				<legend>Your Preferences</legend>
+				
+				<!-- Radio button selections for contact method -->
+				<label>Preferred Contact Method</label>
+				<div class="radio-group">
+					<input type="radio" id="methodEmail" name="contactMethod" value="Email" checked />
+					<label for="methodEmail">Email</label>
+				
+					<input type="radio" id="methodPhone" name="contactMethod" value="Phone" />
+					<label for="methodPhone">Phone</label>
+				
+					<input type="radio" id="methodText" name="contactMethod" value="Text" />
+					<label for="methodText">Text</label>
+				</div>
+				
+				<!--- Slider for rating -->
+				<label for="recommendRange">How likely are you to recommend my site? (1-10)</label>
+				<input type="range" id="recommendRange" name="recommendRange"
+					min="1" max="10" step="1" value="5"
+					oninput="updateSliderValue()" />
+				<span id="rangeOutput">5 out of 10</span>
+			
+				<label for="numChildren">Number of Children You have</label>
+				<input type="number" id="numChildren" name="numChildren"
+					min="0" max="100" step="1" value="0" />
+				
+				<!-- Checkbox selections for topics -->
+				<label>Topics You're Interested In</label>
+				<div class="checkbox-group">
+					<input type="checkbox" id="topicWeb" name="topics" value="Web Development" />
+					<label for="topicWeb">Web Development</label>
+				
+					<input type="checkbox" id="topicMilitary" name="topics" value="Military Life" />
+					<label for="topicMilitary">Military Life</label>
+				
+					<input type="checkbox" id="topicParenting" name="topics" value="Parenting" />
+					<label for="topicParenting">Parenting</label>
+				
+					<input type="checkbox" id="topicTravel" name="topics" value="Travel" />
+					<label for="topicTravel">Travel</label>
+				</div>
+			
+				<!-- Dropdown menu options -->
+				<label for="hearAbout">How Did You Hear About Me?</label>
+				<select id="hearAbout" name="hearABout">
+					<option value="">Please Choose</option>
+					<option value="Search Engine">Search Engine</option>
+					<option value="Social Media">Social Media</option>
+					<option value="Brightspace">Brightspace</option>
+					<option value="Other">Other</option>
+				</select>
+				
+				<!-- Datalist for states with text -->
+				<label for="favoriteState">State You'd Most Like to Visit</label>
+				<input type="text" id="favoriteState" name="favoriteState"
+					list="stateOptions" placeholder="Start typing a state..." />
+				<datalist id="stateOptions">
+					<option value="Georgia"></option>
+					<option value="Texas"></option>
+					<option value="North Carolina"></option>
+					<option value="Florida"></option>
+					<option value="Virginia"></option>
+				</datalist>
+			</fieldset>
+		
+			<fieldset>
+				<legend>Send Me A Message!</legend>
+			
+				<label for="message">Message</label>
+				<textarea id="message" name="message"
+					   minlength="10" maxlength="500" rows="5"
+					   placeholder="Type your message here..."
+					   required></textarea>
+			</fieldset>
+			
+			<!-- Submit and reset buttons -->
+			<div class="form-buttons">
+				<button type="submit">Submit</button>
+				<button type="reset">Cancel</button>
+			</div>
+		</form>
+	</article>
+	</section>
+		
+		<!-- Live clock and countdown -->
+		<section class="timeInfo">
+			<h3>Well, Would You Look At The Time :)</h3>
+		
+			<p>Current day & Time: <span id="clockDisplay">--</span></p>
+		
+			<label for="countdownInput">Start a Countdown! (seconds):</label>
+			<input type="number" id="countdownInput" min="1" max="60" value="10" />
+			<button type="button" onclick="startCountdown()">Start Countdown!</button>
+			<p>Time Remaining: <span id="countdownDisplay">--</span></p>
+		</section>
+	
+		<footer>
+			<b>Kelsey Mack WEB110-N850</b>
+		</footer>
+		
+		
+		
+			
+		<script>
+		
+			<!-- FUNCTIONS FOR CHAPTER 7 AND CHAPTER 9 -->
+			
+			<!-- Change output of slider value -->
+			function updateSliderValue() {
+				const slider = document.getElementById("recommendRange");
+				const sliderTextValue = slider.value;
+				const sliderNumberValue = Number(sliderTextValue);
+				const displayText = sliderNumberValue.toString() + " out of 10";
+				document.getElementById("rangeOutput").textContent = displayText;
+			}
+		
+			<!-- Current day and time function -->
+			function updateClock() {
+				const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday",
+						"Thursday", "Friday", "Saturday"];
+				const now = new Date();
+				const dayName = dayNames[now.getDay()];
+	
+				let hours = now.getHours();
+				let minutes = now.getMinutes();
+				let seconds = now.getSeconds();
+	
+				if (minutes < 10) {
+					minutes = "0" + minutes;
+				}
+				if (seconds < 10) {
+					seconds = "0" + seconds;
+				}
+	
+				const clockText = dayName + " " + hours + ":" + minutes + ":" + seconds;
+				document.getElementById("clockDisplay").textContent = clockText;
+			}
+			
+			<!-- Run clock and update every second -->
+			window.onload = function () {
+				updateClock();
+				setInterval(updateClock, 1000); 	
+			};
+			
+			<!-- Countdown function to run from number entered -->
+			function startCountdown() {
+			const inputField = document.getElementById("countdownInput");
+			let secondsLeft = Number(inputField.value);
+			
+			if (isNaN(secondsLeft) || secondsLeft <= 0) {
+				alert("Please enter a number greater than 0");
+				return;
+			}
+			
+			const countdownDisplay = document.getElementById("countdownDisplay");
+			
+			const timer = setInterval(function () {
+				countdownDisplay.textContent = secondsLeft;
+				secondsLeft = secondsLeft -1;
+				
+				if (secondsLeft < 0) {
+					clearInterval(timer);
+					countdownDisplay.textContent = "Time's Up!";
+				}
+			}, 1000);
+			}
+			
+		</script>
+
+</body>
+</html>
+
+			
+				
+			
+

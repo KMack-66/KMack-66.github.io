@@ -1,0 +1,313 @@
+@charset "utf-8";
+
+*/
+
+
+/* HTML and Body Styles */
+
+html {
+   background: lightblue center center / cover no-repeat fixed;
+   height: 100%;
+   font-family: Verdana, Geneva, sans-serif;
+   font-size: 12px;
+}
+
+body {
+   background: teal;   
+   box-shadow: cornflower blue 5px 0px 15px,
+               cornflower blue -5px 0px 15px;
+   margin: 0px auto;
+   min-height: 100%;
+   min-width: 320px;
+   max-width: 1024px;
+   width: 100%;
+}
+
+/* Body Header Styles */
+
+body header {
+   background: teal;   
+}
+
+body header img {
+   display: block;
+   width: 100%;
+}
+
+/* Horizonal Navigation Styles */
+
+nav.horizontal {
+   background-color: cornflower blue;
+   min-height: 2em;
+}
+
+nav.horizontal li {
+   color: light blue;
+   display: block;
+   line-height: 2em;
+   text-transform: uppercase;
+}
+
+nav.horizontal a {
+   display: block;
+   font-size: 1em;
+   padding: 0.5em 1em;
+}
+
+nav.horizontal a:visited, nav.horizontal a:link {
+   color: white;
+}
+
+nav.horizontal a:hover, nav.horizontal a:active {
+   background-color: cornflower blue;
+   color: white;
+}
+
+/* Main Menu Styles */
+
+ul.mainmenu {
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   flex-direction: row;
+}
+
+ul.mainmenu > li {
+   text-indent: 15px;
+}
+
+ul.mainmenu > li:first-of-type a {
+   color: white;
+   background-color: cornflower blue;
+}
+
+
+
+/* Section Styles */
+
+section {
+   background-color: cornflowerblue;
+   clear: both;
+}
+
+section::after {
+   content: "";
+   display: table;
+   clear: both;
+}
+
+section img {
+   display: block;
+   width: 100%;
+}
+
+section p {
+   line-height: 1.4em;
+   padding: 10px;
+   font-size: 1.2em;
+}
+
+/* Aside Styles */
+
+aside {
+   display: block;
+   background-color: cornflowerblue;
+}
+
+/* Footer Styles */
+
+body > footer {
+   background-color: white;
+   font-size: 0.9em;
+   text-align: center;
+   padding: 10px 0px;
+}
+
+
+
+/* New Styles Added Below */
+
+/* ======================
+	Mobile Styles: 0px to 480px
+   =======================
+*/
+@media only screen and (max-width: 480px) {
+	
+	nav.horizontal a {
+		font-size: 1.5em;
+		line-height: 2.2em;
+	}
+	
+	aside {
+		display: none;
+	}
+	
+}
+
+/* =======================
+	Tablet Styles: 481px and greater
+	========================
+*/
+@media only screen and (min-width: 481px) {
+	
+	ul.mainmenu > li {
+		position: relative;
+		flex: 1;
+	}
+	
+}
+
+/* =======================
+	Desktop Styles: 769px and greater
+   ========================
+*/
+@media only screen and (min-width: 769px) {
+	
+	nav.horizontal::after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+	
+	nav.horizontal a.submenuTitle {
+		display: none;
+	}
+	
+	article {
+		float: left;
+		margin-right: 5%;
+		width: 55%;
+	}
+	aside {
+		float: left;
+		width: 40%;
+	}
+}
+
+nav.horizontal ul.mainmenu {
+    display: flex !important;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* =======================
+	Form Styles
+   ========================
+*/
+
+form {
+   background-color: white;
+   margin: 20px;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+fieldset {
+   border: 2px solid cornflowerblue;
+   border-radius: 6px;
+   margin-bottom: 20px;
+   padding: 15px;
+}
+
+legend {
+   font-weight: bold;
+   color: teal;
+   padding: 0 10px;
+   font-size: 1.1em;
+}
+
+form label {
+   display: block;
+   margin-top: 12px;
+   font-weight: bold;
+   color: #333;
+   font-size: 1em;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="time"],
+form input[type="number"],
+form select,
+form textarea {
+   width: 100%;
+   max-width: 400px;
+   padding: 6px;
+   margin-top: 4px;
+   border: 1px solid #999;
+   border-radius: 4px;
+   font-family: inherit;
+   font-size: 1em;
+   box-sizing: border-box;
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+   margin-right: 6px;
+}
+
+.radio-group,
+.checkbox-group {
+   margin-top: 4px;
+}
+
+.radio-group label,
+.checkbox-group label {
+   display: inline-block;
+   font-weight: normal;
+   margin-right: 15px;
+   margin-top: 6px;
+}
+
+form input[type="range"] {
+   width: 100%;
+   max-width: 400px;
+   margin-top: 8px;
+   vertical-align: middle;
+}
+
+form textarea {
+   resize: vertical;
+   min-height: 100px;
+}
+
+/* =======================
+	Widget Styles
+   ========================
+*/
+
+.timeInfo {
+   background-color: white;
+   margin: 20px;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.timeInfo h3 {
+   color: teal;
+   margin-top: 0;
+}
+
+.timeInfo button {
+   padding: 6px 16px;
+   margin: 6px 6px 6px 0;
+   border: none;
+   border-radius: 4px;
+   background-color: cornflowerblue;
+   color: white;
+   cursor: pointer;
+   font-size: 1em;
+}
+
+#clockDisplay,
+#countdownDisplay,
+#rangeOutput,
+#funFactDisplay {
+   font-weight: bold;
+   color: teal;
+}
